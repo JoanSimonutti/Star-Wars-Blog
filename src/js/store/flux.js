@@ -1,43 +1,60 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			url: 'https://www.swapi.tech/api',
+			people: [],
+			character: {},
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
+			addRemoveFavorite: (fav) => {
+				console.log(fav)
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				const isFavorite = store.favorites.some(el => el.uid === fav.uid && el.type === fav.type);
+				if (isFavorite){
+					//logica para quitar
+					setStore({
+						favorites: store.favorites.filter(el=> !(el.uid === fav.uid && el.type === fav.type))
+					})
+				}
+				else {
+				setStore({ favorites: [...store.favorites, fav]})
 			}
+				/*  
+					Prueba de codigo:
+					
+					if (!isFavorite)
+					else {
+					const filtered = store.favorites.filter(el=> el.uid != fav.uid || el.type != fav.type)
+					setStore({favorites:filtered})
+				}
+				console.log(store.favorites); */
+
+
+			},
+			getData: async (type) => {
+				try {
+					const resp = await fetch(`${getStore().url}/${type}`);
+					if (!resp.ok) throw new Error('Error fetching people');
+					const data = await resp.json();
+					//console.log('data----->', data)
+					//console.log('data.results----->', data.results)
+					setStore({ [type]: data.results });
+				} catch (error) {
+					console.error(error);
+				}
+			},
+			getOne: async (type, uid) => {
+				try {
+					const resp = await fetch(`${getStore().url}/${type}/${uid}`);
+					if (!resp.ok) throw new Error('Error fetching character');
+					const data = await resp.json();
+					setStore({ detailed: data.result });
+				} catch (error) {
+					console.error(error);
+				}
+			},
 		}
 	};
 };

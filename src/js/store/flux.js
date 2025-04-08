@@ -21,15 +21,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				else {
 				setStore({ favorites: [...store.favorites, fav]})
 			}
-				/*  
-					Prueba de codigo:
-					
-					if (!isFavorite)
-					else {
-					const filtered = store.favorites.filter(el=> el.uid != fav.uid || el.type != fav.type)
-					setStore({favorites:filtered})
-				}
-				console.log(store.favorites); */
 
 
 			},

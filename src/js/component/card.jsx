@@ -19,7 +19,7 @@ export const Card = (props) => {
                     <img className="card-img-top" src={props.img} alt={props.name} />
                     <figcaption className="mt-2">{props.name}</figcaption>
                 </figure>
-                <div className="d-flex justify-content-around">
+                <div className="d-flex justify-content-between">
                     <Link to={`/details/${props.type}/${props.uid}`}>
                     <button className="btn button-starwars">Learn more</button>
                     </Link>

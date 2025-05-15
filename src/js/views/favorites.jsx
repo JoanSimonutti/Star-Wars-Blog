@@ -6,24 +6,34 @@ import { Card } from "../component/card.jsx";
 
 export const Favorites = () => {
 
-    const {store, actions} = useContext(Context)
-    
-    return (
-       <div className="container text-start mb-4">
-                <section>
-                    <h2 className="title-outline-sith">MY FAVORITES</h2>
-                    <div className="row">
+    const { store, actions } = useContext(Context)
 
-                    {store.favorites.map((favorito)=>{
-                        return (
-                            <Card name={favorito.name} img={favorito.img} uid={favorito.uid} type={favorito.type} />
+    return (
+        <div className="container text-start mb-4">
+            <section>
+                <h2 className="title-outline-sith">MY FAVORITES</h2>
+                <div className="row">
+                    {
+                        store.favorites.length === 0 ? (
+                            <h2 className="text-center my-5">
+                                NO FAVORITES TO SHOW<br />
+                                ADD FAVORITES ON THE HOME PAGE
+                            </h2>
+                        ) : (
+                            store.favorites.map((favorito) => (
+                                <Card
+                                    key={favorito.uid}
+                                    name={favorito.name}
+                                    img={favorito.img}
+                                    uid={favorito.uid}
+                                    type={favorito.type}
+                                />
+                            ))
                         )
-                    })
-                       
-                        }
-                    </div>
-                </section>       
-            </div>
+                    }
+                </div>
+            </section>
+        </div>
     )
 
 

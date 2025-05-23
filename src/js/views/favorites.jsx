@@ -15,10 +15,10 @@ export const Favorites = () => {
                 <div className="row">
                     {
                         store.favorites.length === 0 ? (
-                            <h2 className="text-center my-5">
+                            <h1 className="text-center my-5">
                                 NO FAVORITES TO SHOW<br />
                                 ADD FAVORITES ON THE HOME PAGE
-                            </h2>
+                            </h1>
                         ) : (
                             store.favorites.map((favorito) => (
                                 <Card

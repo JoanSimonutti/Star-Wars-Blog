@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const VehiclesDetails = (props) => {
     const { store, actions } = useContext(Context);
 
     return (
         <div className="card-details">
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-row align-items-center justify-content-center gap-4 mt-3">
                 <figure>
                     <figcaption>
                         <h1> {store.detailed?.properties?.name} </h1>
@@ -35,6 +36,10 @@ export const VehiclesDetails = (props) => {
                     <p>
                         Price: {store.detailed?.properties?.cost_in_credits}
                     </p>
+                    <br /> <br />
+                    <Link to="/">
+                        <button className="btn button-starwars">Return</button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -59,7 +59,7 @@ export const Home = () => {
 				className="btn button-starwars position-fixed"
 				style={{
 					bottom: "60px",
-					right: "20px",
+					right: "60px",
 					zIndex: 1000,
 					borderRadius: "50%",
 					width: "50px",

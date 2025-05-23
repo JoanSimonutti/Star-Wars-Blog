@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import { Card } from "../component/card.jsx";
-import starwars1 from "../../../docs/starwars1.png" 
+import starwars1 from "../../../docs/starwars1.png"
 
 export const Home = () => {
 
@@ -25,8 +25,8 @@ export const Home = () => {
 					</div>
 				</section>
 				<div className="saber-separator"></div>
-				<section>
-					<h2 className="title-outline-sith">SPECIES</h2>
+				<section id="species">
+					<h2 className="title-outline-sith ">SPECIES</h2>
 					<div className="row">
 						{
 							store.species?.map(el => <Card key={el.uid} type={'species'} name={el.name} uid={el.uid}
@@ -35,7 +35,7 @@ export const Home = () => {
 					</div>
 				</section>
 				<div className="saber-separator"></div>
-				<section>
+				<section id="vehicles">
 					<h2 className="title-outline-sith">VEHICLES</h2>
 					<div className="row">
 						{
@@ -45,7 +45,7 @@ export const Home = () => {
 					</div>
 				</section>
 				<div className="saber-separator"></div>
-				<section>
+				<section id="planets">
 					<h2 className="title-outline-sith">PLANETS</h2>
 					<div className="row">
 						{
@@ -55,6 +55,25 @@ export const Home = () => {
 					</div>
 				</section>
 			</div>
+			<button
+				className="btn button-starwars position-fixed"
+				style={{
+					bottom: "60px",
+					right: "20px",
+					zIndex: 1000,
+					borderRadius: "50%",
+					width: "50px",
+					height: "50px",
+					padding: 0,
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center"
+				}}
+				onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+				aria-label="Return to top"
+			>
+				UP
+			</button>
 		</>
 	);
 }

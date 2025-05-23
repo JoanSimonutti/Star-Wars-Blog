@@ -15,7 +15,15 @@ export const Navbar = () => {
 				<Link to="/favorites">
 					<button className="btn button-starwars">My Favorites</button>
 				</Link>
-				
+				<a href="#species">
+					<button className="btn button-starwars">Species</button>
+				</a>
+				<a href="#vehicles">
+					<button className="btn button-starwars">Vehicles</button>
+				</a>
+				<a href="#planets">
+					<button className="btn button-starwars">Planets</button>
+				</a>
 				<a className="btn button-starwars" href="https://github.com/JoanSimonutti" target="_blank">about me</a>
 			</div>
 		</nav>
